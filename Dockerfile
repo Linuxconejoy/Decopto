@@ -7,9 +7,8 @@ RUN pip install -r requirements.txt
 # Copiar el código fuente
 COPY . .
 
-# Puerto que expone Cloud Run
-ENV PORT=8080
-EXPOSE 8080
-
-# Comando de inicio usando langgraph-cli
-CMD exec langgraph up --port $PORT --host 0.0.0.0
+# Puerto de Cloud Run (LangGraph API escucha en 8000 por defecto)
+# El entrypoint de la imagen base maneja el inicio del servidor
+ENV HOST=0.0.0.0
+ENV PORT=8000
+EXPOSE 8000
